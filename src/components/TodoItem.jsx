@@ -9,7 +9,7 @@ function TodoItem({
   id,
 }) {
   return (
-    <div className="border border-gray-300 rounded p-4 mb-4 bg-amber-400 shadow-xl hover:scale-105 transition duration-300">
+    <div className="border border-gray-300 rounded-xl p-4 mb-4 bg-#93c5fd shadow-xl hover:scale-105 transition duration-100">
       <div>
         <h4 className="text-xl font-semibold">{title}</h4>
         <p className="text-gray-600">{description}</p>
