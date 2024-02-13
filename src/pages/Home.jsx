@@ -79,11 +79,12 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get(`${server}/task/my`, {
+      .get(`https://nodejs-todobackend-azj8.onrender.com/api/v1/task/my`, {
         withCredentials: true,
       })
       .then((res) => {
-        setTasks(res.data.tasks);
+        setTasks(res.data.task);
+        console.log(res.data.task);
       })
       .catch((e) => {
         toast.error(e.response.data.message);
@@ -132,18 +133,17 @@ function Home() {
         </form>
       </div>
       <section className="">
-        {tasks &&
-          tasks.map((i) => (
-            <TodoItem
-              title={i.title}
-              description={i.description}
-              isCompleted={i.isCompleted}
-              updateHandler={updateHandler}
-              deleteHandler={deleteHandler}
-              id={i._id}
-              key={i._id}
-            />
-          ))}
+        {tasks.map((i) => (
+          <TodoItem
+            title={i.title}
+            description={i.description}
+            isCompleted={i.isCompleted}
+            updateHandler={updateHandler}
+            deleteHandler={deleteHandler}
+            id={i._id}
+            key={i._id}
+          />
+        ))}
       </section>
     </div>
   );
