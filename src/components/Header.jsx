@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context, server } from "../main";
 import axios from "axios";
@@ -6,12 +6,12 @@ import toast from "react-hot-toast";
 
 function Header(props) {
   const { isAuthenticated, setAthu, loader, setLoader } = useContext(Context);
+  const [menuOpen, setMenuOpen] = useState(false); // State for menu visibility
+
   // Handle form submission
   const logOutHandler = async () => {
     setLoader(true);
     try {
-      // Here you can add logic to register the user
-
       await axios.get(`${server}/users/logout`, {
         withCredentials: true,
       });
@@ -24,10 +24,11 @@ function Header(props) {
       console.log(true);
     }
   };
+
   return (
     <div>
       <nav className="max-w-7xl mx-auto flex justify-between items-center p-4 bg-purple-500">
-        {/** Heading */}
+        {/* Heading */}
         <div className="flex items-center">
           <Link to={"/"}>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2 text-white flex items-center">
@@ -40,6 +41,8 @@ function Header(props) {
             </h1>
           </Link>
         </div>
+
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-4">
           <Link to={"/"}>
             <span className="text-white hover:bg-purple-700 px-3 py-2 rounded transition duration-300 ease-in-out hover:scale-110">
@@ -52,7 +55,8 @@ function Header(props) {
             </span>
           </Link>
           {isAuthenticated ? (
-            <button disabled={loader}
+            <button
+              disabled={loader}
               className="text-white hover:bg-purple-700 px-3 py-2 rounded transition duration-300 ease-in-out hover:scale-110"
               onClick={logOutHandler}
             >
@@ -66,9 +70,10 @@ function Header(props) {
             </Link>
           )}
         </div>
+
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
-          {/* Mobile menu button */}
-          <button className="text-white">
+          <button className="text-white" onClick={() => setMenuOpen(!menuOpen)}>
             <svg
               className="h-6 w-6 fill-current"
               xmlns="http://www.w3.org/2000/svg"
@@ -79,6 +84,39 @@ function Header(props) {
           </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-purple-500 p-4">
+          <div className="flex flex-col space-y-4">
+            <Link to={"/"}>
+              <span className="text-white hover:bg-purple-700 px-3 py-2 rounded transition duration-300 ease-in-out hover:scale-110">
+                Home
+              </span>
+            </Link>
+            <Link to={"/profile"}>
+              <span className="text-white hover:bg-purple-700 px-3 py-2 rounded transition duration-300 ease-in-out hover:scale-110">
+                Profile
+              </span>
+            </Link>
+            {isAuthenticated ? (
+              <button
+                disabled={loader}
+                className="text-white hover:bg-purple-700 px-3 py-2 rounded transition duration-300 ease-in-out hover:scale-110"
+                onClick={logOutHandler}
+              >
+                Logout
+              </button>
+            ) : (
+              <Link to={"/login"}>
+                <span className="text-white hover:bg-purple-700 px-3 py-2 rounded transition duration-300 ease-in-out hover:scale-110">
+                  Login
+                </span>
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
