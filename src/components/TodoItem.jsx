@@ -9,28 +9,30 @@ function TodoItem({
   id,
 }) {
   return (
-    <div className="border border-gray-300 rounded-xl p-4 mb-4 bg-#93c5fd shadow-xl hover:scale-105 transition duration-100">
-      <div>
-        <h4 className="text-xl font-semibold">{title}</h4>
-        <p className="text-gray-600">{description}</p>
-      </div>
-      <div className="mt-2 flex items-center">
-        <input
-          onChange={() => {
-            updateHandler(id);
-          }}
-          type="checkbox"
-          checked={isCompleted}
-          className="form-checkbox h-5 w-5 text-blue-500"
-        />
-        <button
-          onClick={() => {
-            deleteHandler(id);
-          }}
-          className="ml-2 px-4 py-2 bg-purple-600 text-white rounded-lg shadow focus:outline-none hover:bg-purple-800"
-        >
-          Delete Task
-        </button>
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="border border-gray-300 rounded-xl p-4 shadow-lg">
+        <div>
+          <h4 className="text-xl font-semibold">{title}</h4>
+          <p className="text-gray-600">{description}</p>
+        </div>
+        <div className="mt-2 flex items-center">
+          <input
+            onChange={() => {
+              updateHandler(id);
+            }}
+            type="checkbox"
+            checked={isCompleted}
+            className="form-checkbox h-5 w-5 text-blue-500"
+          />
+          <button
+            onClick={() => {
+              deleteHandler(id);
+            }}
+            className="ml-2 px-4 py-2 bg-purple-600 text-white rounded-lg shadow focus:outline-none hover:bg-purple-800"
+          >
+            Delete Task
+          </button>
+        </div>
       </div>
     </div>
   );

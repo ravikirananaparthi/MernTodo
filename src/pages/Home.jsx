@@ -134,7 +134,7 @@ function Home() {
       </div>
       <section className="">
         {tasks.map((i) => (
-          <TodoItem className='mt-4'
+          <TodoItem className='my-16'
             title={i.title}
             description={i.description}
             isCompleted={i.isCompleted}

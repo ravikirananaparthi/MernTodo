@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gold: '#FFD700', // You can use any hex, rgb, rgba, hsl, etc. value
+      },
+    },
   },
   plugins: [],
 }

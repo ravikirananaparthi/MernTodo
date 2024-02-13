@@ -27,7 +27,7 @@ function Header(props) {
 
   return (
     <div>
-      <nav className="max-w-7xl mx-auto flex justify-between items-center p-4 bg-purple-500">
+      <nav className="w-full mx-auto flex justify-between items-center p-4 bg-purple-500">
         {/* Heading */}
         <div className="flex items-center">
           <Link to={"/"}>
@@ -36,7 +36,7 @@ function Header(props) {
                 📝
               </span>
               <span className="text-xl sm:text-2xl lg:text-3xl font-semibold">
-                To<span className="text-white">Do</span>List
+                To<span className="text-amber-600">do</span>List
               </span>
             </h1>
           </Link>

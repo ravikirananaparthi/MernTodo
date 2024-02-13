@@ -56,11 +56,18 @@ function Login() {
   };
   if (isAuthenticated) return <Navigate to={"/"} />;
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100 shadow-xl">
+    <div
+      className="flex justify-center items-center h-screen"
+      style={{
+        backgroundImage: `url("https://th.bing.com/th/id/OIG3.Mhlurv5ktAtK9hg_N_vR?pid=ImgGn")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className=" shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-opacity-100 backdrop-blur-sm"
         >
           <h2 className="text-2xl text-center font-bold mb-4">Login</h2>
           <div className="mb-4">
