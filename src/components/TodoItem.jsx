@@ -9,7 +9,7 @@ function TodoItem({
   id,
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+    <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4 my-4">
       <div className="border border-gray-300 rounded-xl p-4 shadow-lg">
         <div>
           <h4 className="text-xl font-semibold">{title}</h4>
